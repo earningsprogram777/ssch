@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Skill Sphere Code Hub | Complete Program Analysis & Member Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0A1A 0%, #14142B 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(108,99,255,0.2) 0%, rgba(255,101,132,0.1) 100%);
+            border-radius: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(108,99,255,0.3);
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #6C63FF, #FF6584);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        .header p {
+            color: #B0B0D0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(108,99,255,0.2);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            color: #6C63FF;
+            margin-bottom: 15px;
+        }
+        /* Grid Layout */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: rgba(20,20,43,0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 28px;
+            padding: 28px;
+            border: 1px solid rgba(108,99,255,0.2);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #6C63FF;
+        }
+        .card h2 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #FFB347;
+        }
+        .card h2 i {
+            color: #6C63FF;
+            font-size: 28px;
+        }
+        .card h3 {
+            color: #FF6584;
+            margin: 20px 0 10px 0;
+            font-size: 1.2rem;
+        }
+        .script-box {
+            background: #0A0A1A;
+            border-radius: 20px;
+            padding: 20px;
+            border-left: 4px solid #6C63FF;
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        .highlight {
+            color: #FFB347;
+            font-weight: 600;
+        }
+        .earning-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .earning-item {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 16px;
+        }
+        .earning-item .level {
+            font-size: 24px;
+            font-weight: 800;
+            color: #FF6584;
+        }
+        .earning-item .amount {
+            font-size: 20px;
+            font-weight: 700;
+            color: #FFB347;
+        }
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .course-tag {
+            background: rgba(108,99,255,0.2);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+        }
+        .btn-copy {
+            background: linear-gradient(135deg, #6C63FF, #4A3FDB);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+            width: 100%;
+        }
+        .btn-copy:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(108,99,255,0.4);
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+        .faq-item strong {
+            color: #6C63FF;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .stat {
+            background: rgba(108,99,255,0.15);
+            padding: 20px;
+            border-radius: 20px;
+            min-width: 140px;
+        }
+        .stat .number {
+            font-size: 32px;
+            font-weight: 800;
+            color: #FF6584;
+        }
+        .warning-box {
+            background: rgba(255,101,132,0.15);
+            border-left: 4px solid #FF6584;
+            padding: 18px;
+            border-radius: 16px;
+            margin: 20px 0;
+        }
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .earning-grid {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+            color: #888;
+            font-size: 12px;
+        }
+        .social-share {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .social-share a {
+            color: #B0B0D0;
+            font-size: 24px;
+            transition: 0.3s;
+        }
+        .social-share a:hover {
+            color: #6C63FF;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <span class="badge"><i class="fas fa-chart-line"></i> COMPLETE PROGRAM ANALYSIS</span>
+            <h1>Skill Sphere Code Hub</h1>
+            <p>Learn • Earn • Grow — A Complete "Learn + Earn" Ecosystem</p>
+            <div class="stats">
+                <div class="stat"><div class="number">15+</div><div>Professional Courses</div></div>
+                <div class="stat"><div class="number">3-Level</div><div>Referral Income</div></div>
+                <div class="stat"><div class="number">₹5000+</div><div>Monthly Earning Potential</div></div>
+                <div class="stat"><div class="number">500+</div><div>Active Members</div></div>
+            </div>
+        </div>
+
+        <!-- Main Grid: Analysis & Guide -->
+        <div class="grid-2">
+            <!-- Left Column: Program Analysis -->
+            <div class="card">
+                <h2><i class="fas fa-chart-simple"></i> Program Analysis</h2>
+                <p><strong>Skill Sphere Code Hub</strong> is an innovative <span class="highlight">"Learn + Earn"</span> platform that combines skill development with a powerful 3-level referral commission system.</p>
+                
+                <h3><i class="fas fa-graduation-cap"></i> What They Offer</h3>
+                <div class="course-list">
+                    <span class="course-tag">Web Development</span>
+                    <span class="course-tag">Python Programming</span>
+                    <span class="course-tag">Video Editing</span>
+                    <span class="course-tag">Stock Market</span>
+                    <span class="course-tag">Instagram Mastery</span>
+                    <span class="course-tag">Digital Marketing</span>
+                    <span class="course-tag">Google Ads</span>
+                    <span class="course-tag">ChatGPT & AI</span>
+                    <span class="course-tag">Website Designing</span>
+                    <span class="course-tag">Digital Products Business</span>
+                    <span class="course-tag">Facebook Marketing</span>
+                    <span class="course-tag">Prompt Engineering</span>
+                    <span class="course-tag">100+ Books Library</span>
+                </div>
+
+                <h3><i class="fas fa-coins"></i> 3-Level Referral System</h3>
+                <div class="earning-grid">
+                    <div class="earning-item">
+                        <div class="level">Level 1</div>
+                        <div class="amount">₹100 - ₹500</div>
+                        <small>Direct Referral</small>
+                    </div>
+                    <div class="earning-item">
+                        <div class="level">Level 2</div>
+                        <div class="amount">₹50 - ₹240</div>
+                        <small>Team Income</small>
+                    </div>
+                    <div class="earning-item">
+                        <div class="level">Level 3</div>
+                        <div class="amount">₹30 - ₹150</div>
+                        <small>Network Income</small>
+                    </div>
+                </div>
+                <p><strong>Example:</strong> If you refer 10 people (Level 1), each refers 5 (Level 2), and each refers 3 (Level 3) — your monthly passive income can exceed <span class="highlight">₹10,000+</span>!</p>
+
+                <h3><i class="fas fa-tag"></i> Membership Plans</h3>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Trial (₹50)</strong> - 7 days | L1:₹20 L2:₹10 L3:₹5</li>
+                    <li><strong>Starter (₹299)</strong> - 4 months | L1:₹100 L2:₹50 L3:₹30</li>
+                    <li><strong>Pro (₹499)</strong> - 8 months | L1:₹170 L2:₹80 L3:₹50</li>
+                    <li><strong>Elite (₹999)</strong> - 16 months | L1:₹330 L2:₹160 L3:₹100</li>
+                    <li><strong>Lifetime (₹1499)</strong> - Lifetime Access | L1:₹500 L2:₹240 L3:₹150</li>
+                </ul>
+
+                <div class="warning-box">
+                    <i class="fas fa-info-circle"></i> <strong>Key Features:</strong>
+                    <ul style="margin-left: 20px; margin-top: 8px;">
+                        <li>✅ Unique Referral Code for each member</li>
+                        <li>✅ Withdrawals starting from ₹20 (processed within 30 mins)</li>
+                        <li>✅ 24/7 WhatsApp Support</li>
+                        <li>✅ Freelancing & Job Assistance</li>
+                        <li>✅ WhatsApp Channel for updates</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Column: What to Explain to New Members -->
+            <div class="card">
+                <h2><i class="fas fa-comment-dots"></i> What to Explain to New Members</h2>
+                <p>When introducing someone to Skill Sphere Code Hub, cover these 5 key areas:</p>
+
+                <h3><i class="fas fa-1"></i> The Concept: Learn + Earn</h3>
+                <div class="script-box">
+                    "Skill Sphere is not just a course platform — it's a complete <strong>income opportunity</strong>. You get access to 15+ high-income skills courses, AND you earn commissions when you invite others to join. It's a win-win: you learn valuable skills while building a passive income stream."
+                </div>
+
+                <h3><i class="fas fa-2"></i> How the 3-Level Referral Works</h3>
+                <div class="script-box">
+                    "When you join, you get a <strong>unique referral code</strong>. Anyone who joins using your code becomes your Level 1. When they invite others, those become your Level 2. And when Level 2 invites, they become your Level 3. You earn commission on EVERY plan purchase at all three levels. The more you share, the more you earn — even when you're sleeping!"
+                </div>
+
+                <h3><i class="fas fa-3"></i> What They Get After Joining</h3>
+                <div class="script-box">
+                    "✅ <strong>Full Course Access:</strong> Web Development, Python, Video Editing, Stock Market, Instagram Mastery, Digital Marketing, Google Ads, ChatGPT, Website Designing, Digital Products, Facebook Marketing, Prompt Engineering, and 100+ Books Library.<br>
+                    ✅ <strong>Referral Dashboard:</strong> Track your earnings and team growth.<br>
+                    ✅ <strong>WhatsApp Support:</strong> 24/7 assistance for any queries.<br>
+                    ✅ <strong>Freelance Opportunities:</strong> Get project referrals and job assistance."
+                </div>
+
+                <h3><i class="fas fa-4"></i> How Much They Can Earn</h3>
+                <div class="script-box">
+                    "Let's do simple math: If you refer just <strong>5 people</strong> on the Starter Plan (₹299), you earn <strong>₹500</strong> instantly (Level 1: ₹100 each). If each of them refers 5 people, you earn <strong>₹1,250</strong> more (Level 2: ₹50 each). That's <strong>₹1,750</strong> from just 5+25 people. Scale this up, and your earnings grow exponentially. Plus, higher plans give even bigger commissions!"
+                </div>
+
+                <h3><i class="fas fa-5"></i> How to Get Started</h3>
+                <div class="script-box">
+                    "Step 1: Choose a plan that suits you (Trial at ₹50 or Starter at ₹299 to begin).<br>
+                    Step 2: Make payment via UPI (QR code or UPI ID: 9985943961@mbk).<br>
+                    Step 3: Fill the registration form with your details and transaction ID.<br>
+                    Step 4: You'll receive your unique referral code within 1 hour.<br>
+                    Step 5: Start learning and sharing your code to earn commissions!"
+                </div>
+
+                <!-- Ready Script to Copy/Paste -->
+                <h3><i class="fas fa-copy"></i> Ready-to-Use Script (Copy & Share)</h3>
+                <div class="script-box" id="readyScript">
+                    "🎓 <strong>Join Skill Sphere Code Hub - Learn Skills & Earn Money!</strong> 🚀<br><br>
+                    📚 <strong>What you get:</strong><br>
+                    • 15+ Professional Courses (Web Dev, Python, Video Editing, Digital Marketing, ChatGPT, Stock Market & more)<br>
+                    • 100+ Books Library<br>
+                    • Freelance & Job Support<br><br>
+                    💰 <strong>Earning System:</strong><br>
+                    • 3-Level Referral Commission<br>
+                    • Level 1: ₹100-500 | Level 2: ₹50-240 | Level 3: ₹30-150<br>
+                    • Withdrawals start at ₹20 (30 mins processing)<br><br>
+                    📌 <strong>Plans:</strong><br>
+                    Trial ₹50 (7 days) | Starter ₹299 (4 months) | Pro ₹499 (8 months) | Elite ₹999 (16 months) | Lifetime ₹1499<br><br>
+                    🔗 Join now and get your referral code!<br>
+                    Payment: UPI 9985943961@mbk | QR Code available<br>
+                    Register after payment!<br><br>
+                    <strong>Any questions? WhatsApp: +91 9603003169</strong>"
+                </div>
+                <button class="btn-copy" onclick="copyScript()"><i class="fas fa-copy"></i> Copy Full Script</button>
+            </div>
+        </div>
+
+        <!-- FAQ Section for New Members -->
+        <div class="card" style="margin-bottom: 30px;">
+            <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions (For Explaining)</h2>
+            <div class="faq-item">
+                <strong><i class="fas fa-chevron-right"></i> Is this legit? Will I really get paid?</strong>
+                <p>Yes! Skill Sphere has 500+ active members and regular payouts. Withdrawals are processed within 30 minutes after request. The platform is built on a transparent referral system.</p>
+            </div>
+            <div class="faq-item">
+                <strong><i class="fas fa-chevron-right"></i> Do I need to be a tech expert to join?</strong>
+                <p>Not at all! The courses are designed for beginners. You'll learn from scratch. Plus, you can start earning by simply sharing your referral link — no technical skills required for that!</p>
+            </div>
+            <div class="faq-item">
+                <strong><i class="fas fa-chevron-right"></i> How do I get my referral code?</strong>
+                <p>After you register and payment is confirmed, you'll receive your unique referral code via WhatsApp within 1 hour. Use this code to invite others.</p>
+            </div>
+            <div class="faq-item">
+                <strong><i class="fas fa-chevron-right"></i> Can I upgrade my plan later?</strong>
+                <p>Absolutely! You can upgrade anytime by paying the difference. Your referral commissions will increase according to the new plan's rates.</p>
+            </div>
+            <div class="faq-item">
+                <strong><i class="fas fa-chevron-right"></i> What if I don't have anyone to refer?</strong>
+                <p>No pressure! You can still enjoy all the courses and skill development. The referral system is an additional benefit — you earn from sharing if you choose to.</p>
+            </div>
+            <div class="faq-item">
+                <strong><i class="fas fa-chevron-right"></i> How do I withdraw my earnings?</strong>
+                <p>You can request withdrawal via WhatsApp support. Minimum withdrawal is ₹20, and payments are sent to your UPI ID within 30 minutes.</p>
+            </div>
+        </div>
+
+        <!-- Quick Pitch / Elevator Speech -->
+        <div class="card">
+            <h2><i class="fas fa-bullhorn"></i> 30-Second Elevator Pitch</h2>
+            <div class="script-box" style="background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(255,101,132,0.1));">
+                <i class="fas fa-play-circle" style="color: #FF6584; margin-right: 10px;"></i>
+                "Hey! I joined this platform called <strong>Skill Sphere Code Hub</strong> where you can learn 15+ high-income skills like Web Development, Python, Video Editing, Digital Marketing, and even ChatGPT — AND you earn money by inviting friends. It's a 3-level referral system. For example, if you take the ₹299 plan and refer 5 people, you earn ₹500 back. Plus, you get access to all courses. I'm already earning passive income from it. Want to check it out? I can share my referral code!"
+            </div>
+            <div style="display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap;">
+                <div style="flex:1; background: rgba(108,99,255,0.1); padding: 15px; border-radius: 16px;">
+                    <i class="fas fa-lightbulb" style="color: #FFB347;"></i>
+                    <strong style="display: block; margin-top: 8px;">Key Talking Points:</strong>
+                    <ul style="margin-left: 20px; font-size: 13px;">
+                        <li>Learn valuable skills + earn passive income</li>
+                        <li>3-level commission system</li>
+                        <li>Low investment (starts at ₹50)</li>
+                        <li>15+ professional courses included</li>
+                        <li>Lifetime earning potential</li>
+                    </ul>
+                </div>
+                <div style="flex:1; background: rgba(255,101,132,0.1); padding: 15px; border-radius: 16px;">
+                    <i class="fas fa-chart-line" style="color: #FF6584;"></i>
+                    <strong style="display: block; margin-top: 8px;">Success Mindset:</strong>
+                    <ul style="margin-left: 20px; font-size: 13px;">
+                        <li>"Share the opportunity, not just the link"</li>
+                        <li>"Help others learn — they'll appreciate it"</li>
+                        <li>"Consistency builds long-term income"</li>
+                        <li>"Everyone can learn new skills"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visual Summary Table -->
+        <div class="card">
+            <h2><i class="fas fa-table-list"></i> Quick Reference Card</h2>
+            <div style="overflow-x: auto;">
+                <table style="width:100%; border-collapse: collapse;">
+                    <tr style="background: rgba(108,99,255,0.2);">
+                        <th style="padding: 12px; text-align: left;">Aspect</th>
+                        <th style="padding: 12px; text-align: left;">Details</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 12px;"><strong>Program Name</strong></td>
+                        <td style="padding: 12px;">Skill Sphere Code Hub</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 12px;"><strong>Model</strong></td>
+                        <td style="padding: 12px;">Learn + Earn (Skill Courses + Referral Income)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 12px;"><strong>Total Courses</strong></td>
+                        <td style="padding: 12px;">15+ Professional Skills + 100+ Books Library</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 12px;"><strong>Referral Levels</strong></td>
+                        <td style="padding: 12px;">3 Levels (Direct, Indirect, Network)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 12px;"><strong>Commission Range</strong></td>
+                        <td style="padding: 12px;">₹30 - ₹500 per referral (depends on plan)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 12px;"><strong>Minimum Withdrawal</strong></td>
+                        <td style="padding: 12px;">₹20 (Processed within 30 mins)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 12px;"><strong>Payment Methods</strong></td>
+                        <td style="padding: 12px;">UPI (QR Code, UPI ID: 9985943961@mbk)</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px;"><strong>Support</strong></td>
+                        <td style="padding: 12px;">24/7 WhatsApp: +91 9603003169</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer with Social Links -->
+        <div class="footer">
+            <p><i class="fas fa-shield-alt"></i> Skill Sphere Code Hub | Learn Skills & Earn Money Online</p>
+            <div class="social-share">
+                <a href="https://wa.me/919603003169" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/skillsspherecodehub" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://whatsapp.com/channel/0029VbC2lLdK0IBag1Y3WC0s" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:skillspherecodehub@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p style="margin-top: 15px;">© 2025 Skill Sphere Code Hub | Complete Member Guide & Analysis</p>
+        </div>
+    </div>
+
+    <script>
+        function copyScript() {
+            const scriptText = document.getElementById('readyScript').innerText;
+            navigator.clipboard.writeText(scriptText).then(() => {
+                // Show temporary notification
+                const btn = document.querySelector('.btn-copy');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 2000);
+            }).catch(() => {
+                alert('Press Ctrl+C to copy the script');
+            });
+        }
+    </script>
+</body>
+</html>
